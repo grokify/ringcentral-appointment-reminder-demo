@@ -47,7 +47,7 @@ func main() {
 
 	http.HandleFunc("/on-call-enter", handlers.HandleCallEnter())
 	http.HandleFunc("/on-call-exit", controllers.HandleCallExit())
-	http.HandleFunc("/on-command-update", controllers.HandleCommandUpdate())
+	http.HandleFunc("/on-command-update", handlers.HandleCommandUpdate())
 	http.HandleFunc("/on-command-error", controllers.HandleCommandError())
 	http.HandleFunc("/ping", controllers.HandlePing())
 
