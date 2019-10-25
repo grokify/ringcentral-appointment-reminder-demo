@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"net/http"
 
+	"github.com/grokify/gotilla/fmt/fmtutil"
 	"github.com/grokify/gotilla/net/httputilmore"
 	"github.com/grokify/gotilla/net/urlutil"
 )
@@ -23,6 +24,7 @@ func (sdk *RcScriptSdk) Play(sessionId, partyId string, body PlayRequest) (*http
 	apiUrl := urlutil.JoinAbsolute(sdk.ServerUrl,
 		fmt.Sprintf(playUrlFormat, sessionId, partyId))
 	fmt.Println(apiUrl)
+	fmtutil.PrintJSON(body)
 
 	jsonStr, err := json.Marshal(body)
 	if err != nil {
