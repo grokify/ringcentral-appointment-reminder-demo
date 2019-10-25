@@ -12,9 +12,9 @@ import (
 )
 
 const (
-	MediaUrlStarWarsMainTheme string = "https://www.thesoundarchive.com/starwars/star-wars-theme-song.mp3"
+	MediaUrlStarWarsMainTheme        string = "https://www.thesoundarchive.com/starwars/star-wars-theme-song.mp3"
 	MediaUrlStarWarsMainThemeDecoded string = "https://raw.githubusercontent.com/vshisterov/test/master/star_wars_decoded.wav"
-	MediaUrlThankYouRc        string = "http://10.28.21.3/prompts/english__united_states_/thankyouforusingrc.wav"
+	MediaUrlThankYouRc               string = "http://10.28.21.3/prompts/english__united_states_/thankyouforusingrc.wav"
 )
 
 type Handlers struct {
@@ -25,8 +25,7 @@ func play(sdk rcscript.RcScriptSdk, evt rcscript.CallEnterEvent) {
 	time.Sleep(1 * time.Second)
 	play := rcscript.PlayRequest{
 		Resources: []rcscript.Resource{
-			{Uri: MediaUrlStarWarsMainThemeDecoded},
-		},
+			{Uri: MediaUrlStarWarsMainThemeDecoded}},
 		InterruptByDtmf: false,
 		RepeatCount:     1}
 	fmtutil.PrintJSON(play)
