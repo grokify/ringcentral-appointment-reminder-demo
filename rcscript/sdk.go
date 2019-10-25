@@ -36,7 +36,6 @@ func (sdk *RcScriptSdk) Play(sessionId, partyId string, body PlayRequest) (*http
 	if err != nil {
 		return nil, err
 	}
-	fmt.Printf("TOKEN: %s\n", sdk.Token)
 	req.Header.Add(httputilmore.HeaderAuthorization, "Bearer "+sdk.Token)
 	req.Header.Add(httputilmore.HeaderContentType, httputilmore.ContentTypeAppJsonUtf8)
 	return client.Do(req)

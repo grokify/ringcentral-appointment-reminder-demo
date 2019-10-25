@@ -10,6 +10,12 @@ import (
 func HandleCallExit() func(http.ResponseWriter, *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		log.Info("EVT_RECEIVE__ON_CALL_EXIT")
+		bytes, err := ioutil.ReadAll(r.Body)
+		if err != nil {
+			log.Warn(err.Error())
+		} else {
+			log.Info(string(bytes))
+		}
 	}
 }
 
