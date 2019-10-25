@@ -29,7 +29,7 @@ func (h *Handlers) HandleCallEnter() func(http.ResponseWriter, *http.Request) {
 
 		play := rcscript.PlayRequest{
 			Resources: []rcscript.Resource{
-				rcscript.Resource{Uri: UrlStarWarsMainTheme},
+				{Uri: UrlStarWarsMainTheme},
 			},
 			InterruptByDtmf: false,
 			RepeatCount:     1}
