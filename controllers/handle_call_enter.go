@@ -25,7 +25,7 @@ func play(sdk rcscript.RcScriptSdk, evt rcscript.CallEnterEvent) {
 	time.Sleep(1 * time.Second)
 	play := rcscript.PlayRequest{
 		Resources: []rcscript.Resource{
-			{Uri: MediaUrlStarWarsMainThemeDecoded}},
+			{Uri: MediaUrlThankYouRc}},
 		InterruptByDtmf: false,
 		RepeatCount:     1}
 	fmtutil.PrintJSON(play)

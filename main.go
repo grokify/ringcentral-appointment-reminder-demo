@@ -34,7 +34,7 @@ func setup() controllers.Handlers {
 
 	sdk := rcscript.RcScriptSdk{
 		ServerUrl: os.Getenv("RINGCENTRAL_SERVER_URL"),
-		Token:     os.Getenv("APP_ACCESS_TOKEN")}
+		Token:     os.Getenv("RINGCENTRAL_ACCESS_TOKEN")}
 
 	fmtutil.PrintJSON(sdk)
 	handlers := controllers.Handlers{
