@@ -33,7 +33,7 @@ type RcScriptSdk struct {
 func (sdk *RcScriptSdk) Play(sessionId, partyId string, body PlayRequest) (*http.Response, error) {
 	apiUrl := urlutil.JoinAbsolute(sdk.ServerUrl,
 		fmt.Sprintf(UrlTelephonySessionsPartiesPlayFormat, DefaultParamValue, sessionId, partyId))
-	fmt.Println(apiUrl)
+	fmt.Println(http.MethodPost + " " + apiUrl)
 	fmtutil.PrintJSON(body)
 
 	jsonStr, err := json.Marshal(body)
