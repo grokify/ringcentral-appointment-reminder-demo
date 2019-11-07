@@ -45,12 +45,11 @@ func (h *Handlers) HandleCommandUpdate() func(http.ResponseWriter, *http.Request
 
 func HandleCommandError() func(http.ResponseWriter, *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
-		log.Info("EVT_RECEIVE__ON_COMMAND_ERROR")
 		bytes, err := ioutil.ReadAll(r.Body)
 		if err != nil {
-			log.Warn(err.Error())
+			log.Warn("EVT_RECEIVE__ON_COMMAND_ERROR: READ_RR: " + err.Error())
 		} else {
-			log.Info(string(bytes))
+			log.Warn("EVT_RECEIVE__ON_COMMAND_ERROR: EVT_BODY: " + string(bytes))
 		}
 	}
 }
