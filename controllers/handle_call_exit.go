@@ -65,5 +65,5 @@ func hangup(sdk rcscript.RcScriptSdk, telephonySessionId string) {
 		log.Info(fmt.Sprintf("Play_API_Status: %v\n", resp.Status))
 	}
 	httputilmore.PrintResponse(resp, true)
-	fmt.Println("done...")
+	log.Info("HANGUP__DONE")
 }

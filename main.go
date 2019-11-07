@@ -1,8 +1,6 @@
 package main
 
 import (
-	"fmt"
-	"log"
 	"net/http"
 	"os"
 
@@ -11,6 +9,7 @@ import (
 	"github.com/grokify/ringcentral-appointment-reminder-demo/controllers"
 	"github.com/grokify/ringcentral-appointment-reminder-demo/rcscript"
 	"github.com/jessevdk/go-flags"
+	log "github.com/sirupsen/logrus"
 )
 
 const DefaultPort string = "8080"
@@ -35,6 +34,11 @@ func setup() controllers.Handlers {
 	sdk := rcscript.RcScriptSdk{
 		ServerUrl: os.Getenv("RINGCENTRAL_SERVER_URL"),
 		Token:     os.Getenv("RINGCENTRAL_ACCESS_TOKEN")}
+	if len(sdk.ServerUrl) == 0 {
+		log.Fatal("E_INIT_FAILURE__NO_RINGCENTRAL_SERVER_URL")
+	} else if len(sdk.Token) == 0 {
+		log.Fatal("E_INIT_FAILURE__NO_RINGCENTRAL_ACCESS_TOKEN")
+	}
 
 	fmtutil.PrintJSON(sdk)
 	handlers := controllers.Handlers{
@@ -51,12 +55,11 @@ func main() {
 	http.HandleFunc("/on-command-error", controllers.HandleCommandError())
 	http.HandleFunc("/ping", controllers.HandlePing())
 
-	port := os.Getenv("PORT")
 	portStr := ":" + DefaultPort
+	port := os.Getenv("PORT")
 	if len(port) > 0 {
 		portStr = ":" + port
 	}
-	fmt.Printf("Running on [%v]\n", portStr)
+	log.Infof("Running on [%v]\n", portStr)
 	http.ListenAndServe(portStr, nil)
-
 }
