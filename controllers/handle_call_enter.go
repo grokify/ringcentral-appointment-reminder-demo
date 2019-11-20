@@ -12,10 +12,13 @@ import (
 )
 
 const (
-	MediaUrlStarWarsMainTheme        string = "https://www.thesoundarchive.com/starwars/star-wars-theme-song.mp3"
-	MediaUrlStarWarsMainThemeDecoded string = "http://raw.githubusercontent.com/vshisterov/test/master/star_wars_decoded.wav"
-	MediaUrlThankYouRc               string = "http://10.28.21.3/prompts/english__united_states_/thankyouforusingrc.wav"
-	MediaUrlThankYouRc2              string = "http://raw.githubusercontent.com/vshisterov/test/master/thankyouforusingrc.wav"
+	MediaUrlStarWarsMainTheme         string = "https://www.thesoundarchive.com/starwars/star-wars-theme-song.mp3"
+	MediaUrlStarWarsMainThemeDecodedG string = "http://raw.githubusercontent.com/vshisterov/test/master/star_wars_decoded.wav"
+	MediaUrlStarWarsMainThemeDecoded  string = "http://ringforce.org/star-wars_decoded.wav"
+	MediaUrlThankYouRc                string = "http://ringforce.org/thank-you-for-using-rc.wav"
+	MediaUrlThankYouRc1               string = "http://10.28.21.3/prompts/english__united_states_/thankyouforusingrc.wav"
+	MediaUrlThankYouRc2               string = "http://raw.githubusercontent.com/vshisterov/test/master/thankyouforusingrc.wav"
+	MediaUrlStarWarsWav               string = "http://www.moviewavs.com/0053148414/WAVS/Movies/Star_Wars/starwars.wav"
 )
 
 type Handlers struct {
