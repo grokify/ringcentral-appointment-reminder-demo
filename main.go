@@ -31,6 +31,8 @@ func setup() controllers.Handlers {
 		}
 	}
 
+	log.Info("Listening on phone number: " + os.Getenv("APP_NUMBER"))
+
 	sdk := rcscript.RcScriptSdk{
 		ServerUrl: os.Getenv("RINGCENTRAL_SERVER_URL"),
 		Token:     os.Getenv("RINGCENTRAL_ACCESS_TOKEN")}
