@@ -26,6 +26,7 @@ type Handlers struct {
 }
 
 func play(sdk rcscript.RcScriptSdk, evt rcscript.CallEnterEvent) {
+	fmtutil.PrintJSON(evt)
 	time.Sleep(1 * time.Second)
 	play := rcscript.PlayRequest{
 		Resources: []rcscript.Resource{
