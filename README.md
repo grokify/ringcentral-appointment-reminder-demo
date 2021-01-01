@@ -1,4 +1,4 @@
-# RingCenral Appointment Reminder Demo
+# RingCentral Appointment Reminder Demo
 
 [![Build Status][build-status-svg]][build-status-url]
 [![Go Report Card][goreport-svg]][goreport-url]
