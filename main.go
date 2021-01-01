@@ -4,10 +4,10 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/grokify/gotilla/config"
-	"github.com/grokify/gotilla/fmt/fmtutil"
 	"github.com/grokify/ringcentral-appointment-reminder-demo/controllers"
 	"github.com/grokify/ringcentral-appointment-reminder-demo/rcscript"
+	"github.com/grokify/simplego/config"
+	"github.com/grokify/simplego/fmt/fmtutil"
 	"github.com/jessevdk/go-flags"
 	log "github.com/sirupsen/logrus"
 )

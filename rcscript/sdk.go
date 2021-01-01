@@ -6,9 +6,9 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/grokify/gotilla/fmt/fmtutil"
-	"github.com/grokify/gotilla/net/httputilmore"
-	"github.com/grokify/gotilla/net/urlutil"
+	"github.com/grokify/simplego/fmt/fmtutil"
+	"github.com/grokify/simplego/net/httputilmore"
+	"github.com/grokify/simplego/net/urlutil"
 )
 
 const (
