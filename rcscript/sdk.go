@@ -53,12 +53,12 @@ func (sdk *RcScriptSdk) Play(sessionID, partyID string, body PlayRequest) (*http
 
 // Hangsup a call
 func (sdk *RcScriptSdk) Hangup(sessionID string) (*http.Response, error) {
-	apiUrl := urlutil.JoinAbsolute(sdk.ServerURL,
+	apiURL := urlutil.JoinAbsolute(sdk.ServerURL,
 		fmt.Sprintf(URLTelephonySessionFormat, DefaultParamValue, sessionID))
-	fmt.Println(apiUrl)
+	fmt.Println(apiURL)
 
 	client := &http.Client{}
-	req, err := http.NewRequest(http.MethodDelete, apiUrl, nil)
+	req, err := http.NewRequest(http.MethodDelete, apiURL, nil)
 	if err != nil {
 		return nil, err
 	}

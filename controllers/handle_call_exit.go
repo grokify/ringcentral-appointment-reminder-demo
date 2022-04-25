@@ -54,10 +54,10 @@ func HandleCommandError() func(http.ResponseWriter, *http.Request) {
 	}
 }
 
-func hangup(sdk rcscript.RcScriptSdk, telephonySessionId string) {
+func hangup(sdk rcscript.RcScriptSdk, telephonySessionID string) {
 	time.Sleep(1 * time.Second)
 
-	resp, err := sdk.Hangup(telephonySessionId)
+	resp, err := sdk.Hangup(telephonySessionID)
 	if err != nil {
 		log.Warn(fmt.Sprintf("Play_API_Error: %v\n", err.Error()))
 	} else {
