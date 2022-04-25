@@ -2,20 +2,20 @@ package rcscript
 
 import (
 	"encoding/json"
-	"io/ioutil"
+	"io"
 	"net/http"
 )
 
 type CallEnterEvent struct {
-	AccountId   string  `json:"accountId"`
-	ExtensionId string  `json:"extensionId"`
+	AccountID   string  `json:"accountId"`
+	ExtensionID string  `json:"extensionId"`
 	InParty     InParty `json:"inParty"`
 	PartyId     string  `json:"partyId"`
 	SessionId   string  `json:"sessionId"`
 }
 
 type InParty struct {
-	Id   string    `json:"id"`
+	ID   string    `json:"id"`
 	From Extension `json:"from"`
 	To   Extension `json:"to"`
 }
@@ -25,8 +25,8 @@ type Extension struct {
 }
 
 type CallExitEvent struct {
-	AccountId   string `json:"accountId"`
-	ExtensionId string `json:"extensionId"`
+	AccountID   string `json:"accountId"`
+	ExtensionID string `json:"extensionId"`
 	PartyId     string `json:"partyId"`
 	SessionId   string `json:"sessionId"`
 }
@@ -49,12 +49,12 @@ type CallExitEvent struct {
 }
 */
 type CommandUpdateEvent struct {
-	AccountId   string `json:"accountId"`
+	AccountID   string `json:"accountId"`
 	Command     string `json:"command"`
-	CommandId   string `json:"commandId"`
-	ExtensionId string `json:"extensionId"`
-	PartyId     string `json:"partyId"`
-	SessionId   string `json:"sessionId"`
+	CommandID   string `json:"commandId"`
+	ExtensionID string `json:"extensionId"`
+	PartyID     string `json:"partyId"`
+	SessionID   string `json:"sessionId"`
 	Status      string `json:"status"`
 }
 
@@ -71,7 +71,7 @@ type CommandUpdateEvent struct {
 */
 
 func Bind(evt interface{}, r *http.Request) error {
-	bytes, err := ioutil.ReadAll(r.Body)
+	bytes, err := io.ReadAll(r.Body)
 	if err != nil {
 		return err
 	}

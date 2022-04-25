@@ -34,9 +34,9 @@ func setup() controllers.Handlers {
 	log.Info("Listening on phone number: " + os.Getenv("APP_NUMBER"))
 
 	sdk := rcscript.RcScriptSdk{
-		ServerUrl: os.Getenv("RINGCENTRAL_SERVER_URL"),
+		ServerURL: os.Getenv("RINGCENTRAL_SERVER_URL"),
 		Token:     os.Getenv("RINGCENTRAL_ACCESS_TOKEN")}
-	if len(sdk.ServerUrl) == 0 {
+	if len(sdk.ServerURL) == 0 {
 		log.Fatal("E_INIT_FAILURE__NO_RINGCENTRAL_SERVER_URL")
 	} else if len(sdk.Token) == 0 {
 		log.Fatal("E_INIT_FAILURE__NO_RINGCENTRAL_ACCESS_TOKEN")

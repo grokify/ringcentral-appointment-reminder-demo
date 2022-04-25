@@ -7,11 +7,10 @@ type PlayRequest struct {
 }
 
 type Resource struct {
-	Uri string `json:"uri"`
+	URI string `json:"uri"`
 }
 
 /*
-
 {
 	"resources": [
 	  {

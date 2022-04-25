@@ -2,7 +2,7 @@ package controllers
 
 import (
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"time"
 
@@ -15,7 +15,7 @@ import (
 func HandleCallExit() func(http.ResponseWriter, *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		log.Info("EVT_RECEIVE__ON_CALL_EXIT")
-		bytes, err := ioutil.ReadAll(r.Body)
+		bytes, err := io.ReadAll(r.Body)
 		if err != nil {
 			log.Warn(err.Error())
 		} else {
@@ -38,14 +38,14 @@ func (h *Handlers) HandleCommandUpdate() func(http.ResponseWriter, *http.Request
 		w.WriteHeader(http.StatusNoContent)
 
 		if evt.Command == rcscript.CommandPlay && evt.Status == rcscript.StatusCompleted {
-			go hangup(h.RcScriptSdk, evt.SessionId)
+			go hangup(h.RcScriptSdk, evt.SessionID)
 		}
 	}
 }
 
 func HandleCommandError() func(http.ResponseWriter, *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
-		bytes, err := ioutil.ReadAll(r.Body)
+		bytes, err := io.ReadAll(r.Body)
 		if err != nil {
 			log.Warn("EVT_RECEIVE__ON_COMMAND_ERROR: READ_RR: " + err.Error())
 		} else {
