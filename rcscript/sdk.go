@@ -17,22 +17,22 @@ const (
 )
 const (
 	DefaultParamValue                     string = "~"
-	UrlTelephonySessionFormat             string = "/restapi/v1.0/account/%s/telephony/sessions/%s"
-	UrlTelephonySessionsPartiesPlayFormat string = `/restapi/v1.0/account/%s/telephony/sessions/%s/parties/%s/play`
+	URLTelephonySessionFormat             string = "/restapi/v1.0/account/%s/telephony/sessions/%s"
+	URLTelephonySessionsPartiesPlayFormat string = `/restapi/v1.0/account/%s/telephony/sessions/%s/parties/%s/play`
 )
 
 //https://platform.devtest.ringcentral.com/restapi/v1.0/account/accountId/telephony/sessions/telephonySessionId
 
 // RcScriptSdk is a simple SDK for making Call Scripting Commands
 type RcScriptSdk struct {
-	ServerUrl string
+	ServerURL string
 	Token     string
 }
 
 // Play plays a media file
-func (sdk *RcScriptSdk) Play(sessionId, partyId string, body PlayRequest) (*http.Response, error) {
-	apiUrl := urlutil.JoinAbsolute(sdk.ServerUrl,
-		fmt.Sprintf(UrlTelephonySessionsPartiesPlayFormat, DefaultParamValue, sessionId, partyId))
+func (sdk *RcScriptSdk) Play(sessionID, partyID string, body PlayRequest) (*http.Response, error) {
+	apiUrl := urlutil.JoinAbsolute(sdk.ServerURL,
+		fmt.Sprintf(URLTelephonySessionsPartiesPlayFormat, DefaultParamValue, sessionID, partyID))
 	fmt.Println(http.MethodPost + " " + apiUrl)
 	fmtutil.PrintJSON(body)
 
@@ -47,14 +47,14 @@ func (sdk *RcScriptSdk) Play(sessionId, partyId string, body PlayRequest) (*http
 		return nil, err
 	}
 	req.Header.Add(httputilmore.HeaderAuthorization, "Bearer "+sdk.Token)
-	req.Header.Add(httputilmore.HeaderContentType, httputilmore.ContentTypeAppJsonUtf8)
+	req.Header.Add(httputilmore.HeaderContentType, httputilmore.ContentTypeAppJSONUtf8)
 	return client.Do(req)
 }
 
 // Hangsup a call
-func (sdk *RcScriptSdk) Hangup(sessionId string) (*http.Response, error) {
-	apiUrl := urlutil.JoinAbsolute(sdk.ServerUrl,
-		fmt.Sprintf(UrlTelephonySessionFormat, DefaultParamValue, sessionId))
+func (sdk *RcScriptSdk) Hangup(sessionID string) (*http.Response, error) {
+	apiUrl := urlutil.JoinAbsolute(sdk.ServerURL,
+		fmt.Sprintf(URLTelephonySessionFormat, DefaultParamValue, sessionID))
 	fmt.Println(apiUrl)
 
 	client := &http.Client{}
