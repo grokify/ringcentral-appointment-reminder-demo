@@ -5,9 +5,9 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/grokify/mogo/fmt/fmtutil"
+	"github.com/grokify/mogo/net/httputilmore"
 	"github.com/grokify/ringcentral-appointment-reminder-demo/rcscript"
-	"github.com/grokify/simplego/fmt/fmtutil"
-	"github.com/grokify/simplego/net/httputilmore"
 	log "github.com/sirupsen/logrus"
 )
 
