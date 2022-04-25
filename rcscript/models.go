@@ -10,8 +10,8 @@ type CallEnterEvent struct {
 	AccountID   string  `json:"accountId"`
 	ExtensionID string  `json:"extensionId"`
 	InParty     InParty `json:"inParty"`
-	PartyId     string  `json:"partyId"`
-	SessionId   string  `json:"sessionId"`
+	PartyID     string  `json:"partyId"`
+	SessionID   string  `json:"sessionId"`
 }
 
 type InParty struct {
@@ -27,8 +27,8 @@ type Extension struct {
 type CallExitEvent struct {
 	AccountID   string `json:"accountId"`
 	ExtensionID string `json:"extensionId"`
-	PartyId     string `json:"partyId"`
-	SessionId   string `json:"sessionId"`
+	PartyID     string `json:"partyId"`
+	SessionID   string `json:"sessionId"`
 }
 
 /*

@@ -36,7 +36,7 @@ func play(sdk rcscript.RcScriptSdk, evt rcscript.CallEnterEvent) {
 		RepeatCount:     1}
 	fmtutil.MustPrintJSON(play)
 
-	resp, err := sdk.Play(evt.SessionId, evt.InParty.ID, play)
+	resp, err := sdk.Play(evt.SessionID, evt.InParty.ID, play)
 	if err != nil {
 		log.Warn(fmt.Sprintf("Play_API_Error: Status [%v] Message[%v]\n", resp.Status, err.Error()))
 	} else {

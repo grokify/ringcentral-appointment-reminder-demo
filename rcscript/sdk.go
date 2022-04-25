@@ -31,9 +31,9 @@ type RcScriptSdk struct {
 
 // Play plays a media file
 func (sdk *RcScriptSdk) Play(sessionID, partyID string, body PlayRequest) (*http.Response, error) {
-	apiUrl := urlutil.JoinAbsolute(sdk.ServerURL,
+	apiURL := urlutil.JoinAbsolute(sdk.ServerURL,
 		fmt.Sprintf(URLTelephonySessionsPartiesPlayFormat, DefaultParamValue, sessionID, partyID))
-	fmt.Println(http.MethodPost + " " + apiUrl)
+	fmt.Println(http.MethodPost + " " + apiURL)
 	fmtutil.PrintJSON(body)
 
 	jsonStr, err := json.Marshal(body)
@@ -42,7 +42,7 @@ func (sdk *RcScriptSdk) Play(sessionID, partyID string, body PlayRequest) (*http
 	}
 
 	client := &http.Client{}
-	req, err := http.NewRequest(http.MethodPost, apiUrl, bytes.NewBuffer(jsonStr))
+	req, err := http.NewRequest(http.MethodPost, apiURL, bytes.NewBuffer(jsonStr))
 	if err != nil {
 		return nil, err
 	}
