@@ -5,5 +5,5 @@ go 1.16
 require (
 	github.com/grokify/mogo v0.39.6
 	github.com/jessevdk/go-flags v1.5.0
-	github.com/sirupsen/logrus v1.8.1
+	github.com/sirupsen/logrus v1.9.0
 )
