@@ -1,7 +1,7 @@
 package controllers
 
 import (
-	"fmt"
+	"log"
 	"net/http"
 	"time"
 
@@ -9,7 +9,6 @@ import (
 	"github.com/grokify/mogo/log/logutil"
 	"github.com/grokify/mogo/net/httputilmore"
 	"github.com/grokify/ringcentral-appointment-reminder-demo/rcscript"
-	log "github.com/sirupsen/logrus"
 )
 
 const (
@@ -38,23 +37,23 @@ func play(sdk rcscript.RcScriptSdk, evt rcscript.CallEnterEvent) {
 
 	resp, err := sdk.Play(evt.SessionID, evt.InParty.ID, play)
 	if err != nil {
-		log.Warn(fmt.Sprintf("Play_API_Error: Status [%v] Message[%v]\n", resp.Status, err.Error()))
+		log.Printf("WARN: Play_API_Error: Status [%v] Message[%v]\n", resp.Status, err.Error())
 	} else {
-		log.Info(fmt.Sprintf("Play_API_Status: %v\n", resp.Status))
+		log.Printf("Play_API_Status: %v\n", resp.Status)
 	}
 	logutil.FatalErr(httputilmore.PrintResponse(resp, true))
-	log.Info("PLAY__DONE")
+	log.Print("PLAY__DONE")
 }
 
 func (h *Handlers) HandleCallEnter() func(http.ResponseWriter, *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
-		log.Info("ON_CALL_ENTER")
+		log.Print("ON_CALL_ENTER")
 		var evt rcscript.CallEnterEvent
 		err := rcscript.Bind(&evt, r)
 		if err != nil {
 			log.Fatal(err)
 		}
-		fmtutil.PrintJSON(evt)
+		fmtutil.MustPrintJSON(evt)
 
 		w.WriteHeader(http.StatusNoContent)
 

@@ -1,15 +1,16 @@
 package main
 
 import (
+	"log"
 	"net/http"
 	"os"
 
 	"github.com/grokify/mogo/config"
 	"github.com/grokify/mogo/fmt/fmtutil"
+	"github.com/grokify/mogo/log/logutil"
 	"github.com/grokify/ringcentral-appointment-reminder-demo/controllers"
 	"github.com/grokify/ringcentral-appointment-reminder-demo/rcscript"
 	"github.com/jessevdk/go-flags"
-	log "github.com/sirupsen/logrus"
 )
 
 const DefaultPort string = "8080"
@@ -22,16 +23,16 @@ func setup() controllers.Handlers {
 	opts := Options{}
 	_, err := flags.Parse(&opts)
 	if err != nil {
-		log.Fatal(err)
+		logutil.FatalErr(err)
 	}
 	if len(opts.EnvFile) > 0 {
 		err := config.LoadDotEnvSkipEmpty(opts.EnvFile)
 		if err != nil {
-			log.Fatal(err)
+			logutil.FatalErr(err)
 		}
 	}
 
-	log.Info("Listening on phone number: " + os.Getenv("APP_NUMBER"))
+	log.Print("Listening on phone number: " + os.Getenv("APP_NUMBER"))
 
 	sdk := rcscript.RcScriptSdk{
 		ServerURL: os.Getenv("RINGCENTRAL_SERVER_URL"),
@@ -62,6 +63,6 @@ func main() {
 	if len(port) > 0 {
 		portStr = ":" + port
 	}
-	log.Infof("Running on [%v]\n", portStr)
+	log.Printf("Running on [%v]\n", portStr)
 	http.ListenAndServe(portStr, nil)
 }
