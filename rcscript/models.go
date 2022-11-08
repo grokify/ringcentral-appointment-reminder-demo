@@ -32,21 +32,21 @@ type CallExitEvent struct {
 }
 
 /*
-{
-  "accountId": "400131801008",
-  "extensionId": "400137552008",
-  "inParty": {
-    "from": {
-      "phoneNumber": "+12127150355"
-    },
-    "id": "p-467aa7237b524387b053c5d5f06787f5",
-    "to": {
-      "phoneNumber": "+12014320001"
-    }
-  },
-  "partyId": "p-ec4202d7dd35401f9e6230d428493701",
-  "sessionId": "s-82eecd460b564de1a42b395eb845d912"
-}
+	{
+	  "accountId": "400131801008",
+	  "extensionId": "400137552008",
+	  "inParty": {
+	    "from": {
+	      "phoneNumber": "+12127150355"
+	    },
+	    "id": "p-467aa7237b524387b053c5d5f06787f5",
+	    "to": {
+	      "phoneNumber": "+12014320001"
+	    }
+	  },
+	  "partyId": "p-ec4202d7dd35401f9e6230d428493701",
+	  "sessionId": "s-82eecd460b564de1a42b395eb845d912"
+	}
 */
 type CommandUpdateEvent struct {
 	AccountID   string `json:"accountId"`

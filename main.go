@@ -43,7 +43,7 @@ func setup() controllers.Handlers {
 		log.Fatal("E_INIT_FAILURE__NO_RINGCENTRAL_ACCESS_TOKEN")
 	}
 
-	fmtutil.PrintJSON(sdk)
+	fmtutil.MustPrintJSON(sdk)
 	handlers := controllers.Handlers{
 		RcScriptSdk: sdk}
 	return handlers
