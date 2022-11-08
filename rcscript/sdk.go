@@ -6,7 +6,6 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/grokify/mogo/fmt/fmtutil"
 	"github.com/grokify/mogo/net/httputilmore"
 	"github.com/grokify/mogo/net/urlutil"
 )
@@ -34,7 +33,7 @@ func (sdk *RcScriptSdk) Play(sessionID, partyID string, body PlayRequest) (*http
 	apiURL := urlutil.JoinAbsolute(sdk.ServerURL,
 		fmt.Sprintf(URLTelephonySessionsPartiesPlayFormat, DefaultParamValue, sessionID, partyID))
 	fmt.Println(http.MethodPost + " " + apiURL)
-	fmtutil.PrintJSON(body)
+	// fmtutil.PrintJSON(body)
 
 	jsonStr, err := json.Marshal(body)
 	if err != nil {

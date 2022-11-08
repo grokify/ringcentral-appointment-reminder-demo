@@ -6,7 +6,6 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/grokify/mogo/fmt/fmtutil"
 	"github.com/grokify/mogo/net/httputilmore"
 	"github.com/grokify/ringcentral-appointment-reminder-demo/rcscript"
 )
@@ -32,7 +31,7 @@ func (h *Handlers) HandleCommandUpdate() func(http.ResponseWriter, *http.Request
 		if err != nil {
 			log.Fatal(err)
 		}
-		fmtutil.PrintJSON(evt)
+		// fmtutil.PrintJSON(evt)
 
 		w.WriteHeader(http.StatusNoContent)
 
@@ -62,6 +61,9 @@ func hangup(sdk rcscript.RcScriptSdk, telephonySessionID string) {
 	} else {
 		log.Printf("Play_API_Status: %v\n", resp.Status)
 	}
-	httputilmore.PrintResponse(resp, true)
+	err = httputilmore.PrintResponse(resp, true)
+	if err != nil {
+		log.Printf("Play_API_Print_Error: %v\n", err.Error())
+	}
 	log.Print("HANGUP__DONE")
 }

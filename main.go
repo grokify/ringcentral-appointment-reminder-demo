@@ -10,7 +10,7 @@ import (
 	"github.com/grokify/mogo/log/logutil"
 	"github.com/grokify/ringcentral-appointment-reminder-demo/controllers"
 	"github.com/grokify/ringcentral-appointment-reminder-demo/rcscript"
-	"github.com/jessevdk/go-flags"
+	flags "github.com/jessevdk/go-flags"
 )
 
 const DefaultPort string = "8080"
