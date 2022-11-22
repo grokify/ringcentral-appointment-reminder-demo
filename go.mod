@@ -3,7 +3,7 @@ module github.com/grokify/ringcentral-appointment-reminder-demo
 go 1.18
 
 require (
-	github.com/grokify/mogo v0.41.2
+	github.com/grokify/mogo v0.41.3
 	github.com/jessevdk/go-flags v1.5.0
 )
 
