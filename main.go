@@ -4,10 +4,12 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"time"
 
 	"github.com/grokify/mogo/config"
 	"github.com/grokify/mogo/fmt/fmtutil"
 	"github.com/grokify/mogo/log/logutil"
+	"github.com/grokify/mogo/net/http/httputilmore"
 	"github.com/grokify/ringcentral-appointment-reminder-demo/controllers"
 	"github.com/grokify/ringcentral-appointment-reminder-demo/rcscript"
 	flags "github.com/jessevdk/go-flags"
@@ -26,7 +28,7 @@ func setup() controllers.Handlers {
 		logutil.FatalErr(err)
 	}
 	if len(opts.EnvFile) > 0 {
-		err := config.LoadDotEnvSkipEmpty(opts.EnvFile)
+		_, err := config.LoadDotEnv([]string{opts.EnvFile}, 1)
 		if err != nil {
 			logutil.FatalErr(err)
 		}
@@ -52,11 +54,13 @@ func setup() controllers.Handlers {
 func main() {
 	handlers := setup()
 
-	http.HandleFunc("/on-call-enter", handlers.HandleCallEnter())
-	http.HandleFunc("/on-call-exit", controllers.HandleCallExit())
-	http.HandleFunc("/on-command-update", handlers.HandleCommandUpdate())
-	http.HandleFunc("/on-command-error", controllers.HandleCommandError())
-	http.HandleFunc("/ping", controllers.HandlePing())
+	mux := http.NewServeMux()
+
+	mux.HandleFunc("/on-call-enter", handlers.HandleCallEnter())
+	mux.HandleFunc("/on-call-exit", controllers.HandleCallExit())
+	mux.HandleFunc("/on-command-update", handlers.HandleCommandUpdate())
+	mux.HandleFunc("/on-command-error", controllers.HandleCommandError())
+	mux.HandleFunc("/ping", controllers.HandlePing())
 
 	portStr := ":" + DefaultPort
 	port := os.Getenv("PORT")
@@ -64,5 +68,6 @@ func main() {
 		portStr = ":" + port
 	}
 	log.Printf("Running on [%v]\n", portStr)
-	http.ListenAndServe(portStr, nil)
+	svr := httputilmore.NewServerTimeouts(portStr, mux, 1*time.Second)
+	log.Fatal(svr.ListenAndServe())
 }
