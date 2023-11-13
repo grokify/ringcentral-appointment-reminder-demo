@@ -2,7 +2,7 @@ module github.com/grokify/ringcentral-appointment-reminder-demo
 
 go 1.21
 
-toolchain go1.21.1
+// toolchain go1.21.1
 
 require (
 	github.com/grokify/mogo v0.60.1
