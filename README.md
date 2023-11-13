@@ -11,7 +11,7 @@
 ngrok http 8080 -hostname=yourdomain.ngrok.io
 ```
 
- [build-status-svg]: https://github.com/grokify/ringcentral-appointment-reminder-demo/workflows/build/badge.svg
+ [build-status-svg]: https://github.com/grokify/ringcentral-appointment-reminder-demo/workflows/test/badge.svg
  [build-status-url]: https://github.com/grokify/ringcentral-appointment-reminder-demo/actions
  [goreport-svg]: https://goreportcard.com/badge/github.com/grokify/ringcentral-appointment-reminder-demo
  [goreport-url]: https://goreportcard.com/report/github.com/grokify/ringcentral-appointment-reminder-demo
